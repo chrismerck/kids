@@ -4,7 +4,7 @@ import { SCREEN_HEIGHT } from './constants'
 
 export class Tank {
   public x: number
-  public y: number
+  public y: number = 0
   public shields: number = 5
   public color: string
   public playerNum: number

@@ -4,7 +4,6 @@ import { Projectile } from './Projectile'
 import { SCREEN_WIDTH, SCREEN_HEIGHT, TANK_COLORS, SKY_COLOR } from './constants'
 
 export class Game {
-  private canvas: HTMLCanvasElement
   private ctx: CanvasRenderingContext2D
   private terrain: Terrain
   private tanks: Tank[]
@@ -18,12 +17,10 @@ export class Game {
   private onGameOver: (gameOver: boolean, winner: number | null) => void
 
   constructor(
-    canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D,
     onGameOver: (gameOver: boolean, winner: number | null) => void,
     numPlayers: number = 2
   ) {
-    this.canvas = canvas
     this.ctx = ctx
     this.onGameOver = onGameOver
     

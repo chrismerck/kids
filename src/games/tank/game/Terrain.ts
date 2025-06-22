@@ -173,20 +173,6 @@ export class Terrain {
     this.surfaceHeights = this.calculateSurfaceHeights()
   }
 
-  private slideTerrain() {
-    for (let x = 0; x < this.width; x++) {
-      let count = 0
-      for (let y = 0; y < this.height; y++) {
-        if (this.grid[x][y]) {
-          count++
-        }
-      }
-      
-      for (let y = 0; y < this.height; y++) {
-        this.grid[x][y] = y >= this.height - count
-      }
-    }
-  }
 
   public getHeightAt(x: number): number {
     if (x >= 0 && x < this.width) {

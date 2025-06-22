@@ -20,7 +20,7 @@ function TankGame({ onBackToMenu }: TankGameProps) {
     if (!ctx) return
 
     // Initialize game
-    const game = new Game(canvas, ctx, (gameOver, winnerNum) => {
+    const game = new Game(ctx, (gameOver, winnerNum) => {
       setIsGameOver(gameOver)
       setWinner(winnerNum)
     })
