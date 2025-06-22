@@ -1,0 +1,10 @@
+export const SCREEN_WIDTH = 1600
+export const SCREEN_HEIGHT = 1200
+export const FPS = 60
+export const GRAVITY = 0.5
+export const GROUND_COLOR = '#64501E'
+export const SKY_COLOR = '#87CEEB'
+export const TANK_COLORS = ['#FF0000', '#0000FF', '#00FF00', '#FFFF00']
+export const PROJECTILE_SPEED = 20
+export const EXPLOSION_RADIUS = 60
+export const TERRAIN_RESOLUTION = 1600

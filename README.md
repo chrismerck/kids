@@ -1,48 +1,41 @@
-# 9 Lives - Math Game
+# Kids Games
 
-A fun math game where cats battle dogs using arithmetic operations!
+A collection of fun browser-based games for kids, built with React and TypeScript.
 
-## Requirements
+## Available Games
 
-- Python 3.x
-- Pygame
+- **Tank Battle** - A classic artillery game where players take turns firing projectiles at each other
 
-## Installation
+## Development
 
-1. Make sure you have Python installed on your system.
-2. Install Pygame:
-```
-pip install pygame
-```
+```bash
+# Install dependencies
+npm install
 
-## How to Run
+# Run development server
+npm run dev
 
-Run the game with the following command:
-```
-python nine_lives.py
+# Build for production
+npm run build
 ```
 
-## How to Play
+## Deployment
 
-### Game Rules:
-- On the left side, you have 9 cats arranged in a 3x3 grid, each with a random number (1-9)
-- On the right side, there are 2 dogs, each with a random number (1-100)
-- The goal is to make the cats fight and defeat all dogs over 9 rounds
+This project is automatically deployed to GitHub Pages at https://chrismerck.github.io/kids/ when changes are pushed to the main branch.
 
-### Controls:
-1. Click on a cat to select it (its number will be added to your expression)
-2. Click on an operation button (+, -, ×) to choose an operation
-3. Click on another cat to continue building your expression
-4. Repeat steps 2-3 to build longer expressions as needed
-5. Click the sword button (⚔️) to attack
+## Adding New Games
 
-### Battle Mechanics:
-- If your final calculated value matches the number above a dog, that dog will be defeated
-- If your value doesn't match any dog's number, the cats involved in the expression will be defeated
-- You win the round if all dogs are defeated
-- You lose if all cats are defeated
+To add a new game:
 
-### Game Progression:
-- The game consists of 9 rounds
-- New random numbers are generated for each round
-- Try to complete all 9 rounds to win the game! 
+1. Create a new folder in `src/games/`
+2. Implement your game component
+3. Add a button for your game in `src/components/GameMenu.tsx`
+4. Update the `App.tsx` to handle routing to your new game
+
+## Technology Stack
+
+- React
+- TypeScript
+- Vite
+- HTML5 Canvas
+- GitHub Pages
