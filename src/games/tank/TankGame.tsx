@@ -75,7 +75,8 @@ function TankGame({ onBackToMenu }: TankGameProps) {
       <div className="game-controls">
         <div className="controls-info">
           <h3>Controls:</h3>
-          <p>← → Arrow Keys: Rotate Barrel</p>
+          <p>← → Arrow Keys: Move Tank</p>
+          <p>↑ ↓ Arrow Keys: Aim Barrel</p>
           <p>Space: Fire</p>
         </div>
       </div>

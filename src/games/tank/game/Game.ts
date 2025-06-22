@@ -27,14 +27,11 @@ export class Game {
     // Initialize terrain
     this.terrain = new Terrain(SCREEN_WIDTH, SCREEN_HEIGHT)
     
-    // Create tanks
+    // Create tanks at fixed positions (15% and 85% of screen width)
     this.tanks = []
-    const positions = []
-    for (let i = 0; i < numPlayers; i++) {
-      positions.push(SCREEN_WIDTH / (numPlayers + 1) * (i + 1))
-    }
+    const positions = [SCREEN_WIDTH * 0.15, SCREEN_WIDTH * 0.85]
     
-    for (let i = 0; i < numPlayers; i++) {
+    for (let i = 0; i < Math.min(numPlayers, 2); i++) {
       this.tanks.push(new Tank(positions[i], this.terrain, TANK_COLORS[i], i + 1))
     }
     
@@ -50,7 +47,7 @@ export class Game {
   private handleKeyDown = (e: KeyboardEvent) => {
     if (this.gameOver || this.waitingForProjectile) return
 
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
       this.keysPressed[e.key] = true
     } else if (e.key === ' ') {
       this.fire()
@@ -86,10 +83,7 @@ export class Game {
     this.terrain = new Terrain(SCREEN_WIDTH, SCREEN_HEIGHT)
     const numPlayers = 2 // Fixed number of players for restart
     this.tanks = []
-    const positions = []
-    for (let i = 0; i < numPlayers; i++) {
-      positions.push(SCREEN_WIDTH / (numPlayers + 1) * (i + 1))
-    }
+    const positions = [SCREEN_WIDTH * 0.15, SCREEN_WIDTH * 0.85]
     
     for (let i = 0; i < numPlayers; i++) {
       this.tanks.push(new Tank(positions[i], this.terrain, TANK_COLORS[i], i + 1))
@@ -103,13 +97,24 @@ export class Game {
   }
 
   private update() {
-    // Handle continuous key presses for barrel rotation
+    // Handle continuous key presses for tank movement and barrel rotation
     if (!this.waitingForProjectile && !this.gameOver) {
+      const currentTank = this.tanks[this.currentPlayer]
+      
+      // Barrel rotation with up/down
+      if (this.keysPressed['ArrowUp']) {
+        currentTank.rotateBarrel(1)
+      }
+      if (this.keysPressed['ArrowDown']) {
+        currentTank.rotateBarrel(-1)
+      }
+      
+      // Tank movement with left/right
       if (this.keysPressed['ArrowLeft']) {
-        this.tanks[this.currentPlayer].rotateBarrel(1)
+        currentTank.move(-2) // Move left
       }
       if (this.keysPressed['ArrowRight']) {
-        this.tanks[this.currentPlayer].rotateBarrel(-1)
+        currentTank.move(2) // Move right
       }
     }
 
